@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Classificação do Aluno</title>
+    <script></script>
+</head>
+<body>
+    <h1>Classificação do Aluno</h1>
+    <form id="notasForm">
+        <label for="nota1">Nota 1:</label>
+        <input type="number" id="nota1" name="nota1" step="0.01" required><br><br>
+        
+        <label for="nota2">Nota 2:</label>
+        <input type="number" id="nota2" name="nota2" step="0.01" required><br><br>
+        
+        <label for="nota3">Nota 3:</label>
+        <input type="number" id="nota3" name="nota3" step="0.01" required><br><br>
+        
+        <input type="button" value="Calcular" onclick="calcularMedia()">
+    </form>
+    
+    <p id="resultado"></p>
+
+    <script>
+        function calcularMedia() {
+            // Obter as notas do formulário
+            let nota1 = parseFloat(document.getElementById('nota1').value);
+            let nota2 = parseFloat(document.getElementById('nota2').value);
+            let nota3 = parseFloat(document.getElementById('nota3').value);
+
+            // Calcular a média
+            let media = (nota1 + nota2 + nota3) / 3;
+
+            // Determinar a classificação do aluno
+            let classificacao;
+            if (media >= 7) {
+                classificacao = "Aprovado";
+            } else if (media >= 5) {
+                classificacao = "Em Recuperação";
+            } else {
+                classificacao = "Reprovado";
+            }
+
+            // Exibir a média e a classificação do aluno
+            document.getElementById('resultado').innerHTML = "Média: " + media.toFixed(2) + "<br>Classificação: " + classificacao;
+        }
+    </script>
+</body>
+</html>
